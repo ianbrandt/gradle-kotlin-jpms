@@ -16,11 +16,16 @@ repositories {
     mavenCentral()
 }
 
+java {
+    toolchain {
+        languageVersion.set(JavaLanguageVersion.of(javaTargetVersion))
+    }
+}
+
 application {
     mainModule.set("com.ianbrandt.jpms")
     mainClass.set("com.ianbrandt.jpms.HelloWorldKt")
 }
-
 
 tasks {
 
