@@ -16,8 +16,8 @@ repositories {
     mavenCentral()
 }
 
-java {
-    toolchain {
+kotlin {
+    jvmToolchain  {
         languageVersion.set(JavaLanguageVersion.of(javaTargetVersion))
     }
 }
