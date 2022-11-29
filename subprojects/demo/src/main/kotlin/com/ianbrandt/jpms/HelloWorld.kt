@@ -1,11 +1,10 @@
 package com.ianbrandt.jpms
 
-class HelloWorld {
+fun main() {
+	println(HelloWorld.sayHello())
+}
 
-	companion object {
-		@JvmStatic
-		fun main(args: Array<String>) {
-			println("Hello, World!")
-		}
-	}
+object HelloWorld {
+
+	fun sayHello() = "Hello, JPMS!"
 }
