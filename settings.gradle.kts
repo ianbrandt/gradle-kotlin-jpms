@@ -12,4 +12,5 @@ dependencyResolutionManagement {
 
 rootProject.name = "gradle-kotlin-jpms"
 
-include("subprojects:demo")
+include("subprojects:named-module")
+include("subprojects:unnamed-module")

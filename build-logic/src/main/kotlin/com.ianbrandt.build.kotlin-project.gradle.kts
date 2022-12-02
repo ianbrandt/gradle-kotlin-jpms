@@ -8,6 +8,12 @@ plugins {
 val javaTargetVersion = JavaVersion.VERSION_17.toString()
 val kotlinTargetVersion = "1.7"
 
+kotlin {
+	jvmToolchain {
+		languageVersion.set(JavaLanguageVersion.of(javaTargetVersion))
+	}
+}
+
 dependencies {
 
 	runtimeOnly(kotlin("reflect"))
@@ -25,7 +31,7 @@ tasks {
 			languageVersion = kotlinTargetVersion
 			apiVersion = kotlinTargetVersion
 			jvmTarget = javaTargetVersion
-			freeCompilerArgs = listOf(
+			freeCompilerArgs += listOf(
 				"-Xjsr305=strict",
 			)
 
