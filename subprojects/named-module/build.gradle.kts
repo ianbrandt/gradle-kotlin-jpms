@@ -3,25 +3,11 @@ plugins {
 	id("com.ianbrandt.build.kotlin-project")
 }
 
-val jpmsArgs = listOf(
-	"--add-reads", "com.ianbrandt.jpms.named=ALL-UNNAMED",
-)
-
 application {
 	mainModule.set("com.ianbrandt.jpms.named")
-	mainClass.set("com.ianbrandt.jpms.HelloWorldKt")
-	applicationDefaultJvmArgs = jpmsArgs
+	mainClass.set("com.ianbrandt.jpms.named.HelloWorldKt")
 }
 
 dependencies {
-	implementation(project(":subprojects:unnamed-module"))
-}
-
-tasks {
-	withType<JavaCompile>().configureEach {
-		options.apply {
-			compilerArgs.addAll(jpmsArgs)
-			isFork = true
-		}
-	}
+	implementation(project(":subprojects:automatic-module"))
 }
