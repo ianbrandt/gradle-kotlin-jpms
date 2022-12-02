@@ -9,7 +9,7 @@ val jpmsArgs = listOf(
 
 application {
 	mainModule.set("com.ianbrandt.jpms.named")
-	mainClass.set("com.ianbrandt.jpms.HelloWorld")
+	mainClass.set("com.ianbrandt.jpms.HelloWorldKt")
 	applicationDefaultJvmArgs = jpmsArgs
 }
 
