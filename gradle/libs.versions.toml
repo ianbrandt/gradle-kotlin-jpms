@@ -1,27 +1,9 @@
 [versions]
 
-assertj = "3.23.1"
-equalsverifier = "3.11"
-jetbrains-annotations = "23.0.0"
-junit = "5.9.1"
-kotlin = "1.7.21"
-kotlinx-coroutines = "1.6.4"
-mockk = "1.13.2"
-slf4j = "2.0.3"
+junit = "5.11.0"
+kotlin = "2.0.20"
 
 [libraries]
-
-[libraries.assertj]
-module = "org.assertj:assertj-core"
-version.ref = "assertj"
-
-[libraries.equalsverifier]
-module = "nl.jqno.equalsverifier:equalsverifier"
-version.ref = "equalsverifier"
-
-[libraries.jetbrains-annotations]
-module = "org.jetbrains:annotations"
-version.ref = "jetbrains-annotations"
 
 [libraries.junit-bom]
 module = "org.junit:junit-bom"
@@ -30,35 +12,6 @@ version.ref = "junit"
 [libraries.kotlin-gradle-plugin-dependency]
 module = "org.jetbrains.kotlin:kotlin-gradle-plugin"
 version.ref = "kotlin"
-
-[libraries.kotlinx-coroutines-core]
-module = "org.jetbrains.kotlinx:kotlinx-coroutines-core"
-version.ref = "kotlinx-coroutines"
-
-[libraries.kotlinx-coroutines-core-jvm]
-module = "org.jetbrains.kotlinx:kotlinx-coroutines-core-jvm"
-version.ref = "kotlinx-coroutines"
-
-[libraries.mockk]
-module = "io.mockk:mockk"
-version.ref = "mockk"
-
-[libraries.mockk-dsl-jvm]
-module = "io.mockk:mockk-dsl-jvm"
-version.ref = "mockk"
-
-[libraries.slf4j-simple]
-module = "org.slf4j:slf4j-simple"
-version.ref = "slf4j"
-
-[bundles]
-
-kotlinx-coroutines-jvm = [
-	"kotlinx-coroutines-core",
-	"kotlinx-coroutines-core-jvm"
-]
-
-mockk-jvm = ["mockk", "mockk-dsl-jvm"]
 
 [plugins]
 

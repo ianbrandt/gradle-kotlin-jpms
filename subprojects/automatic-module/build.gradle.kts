@@ -1,9 +1,9 @@
 plugins {
-	id("com.ianbrandt.build.kotlin-project")
+	id("com.ianbrandt.buildlogic.kotlin-project")
 }
 
 dependencies {
-	implementation(project(":subprojects:unnamed-module"))
+	implementation(projects.subprojects.unnamedModule)
 }
 
 tasks {

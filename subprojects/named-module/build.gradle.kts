@@ -1,6 +1,6 @@
 plugins {
 	application
-	id("com.ianbrandt.build.kotlin-project")
+	id("com.ianbrandt.buildlogic.kotlin-project")
 }
 
 application {
@@ -9,5 +9,5 @@ application {
 }
 
 dependencies {
-	implementation(project(":subprojects:automatic-module"))
+	implementation(projects.subprojects.unnamedModule)
 }
