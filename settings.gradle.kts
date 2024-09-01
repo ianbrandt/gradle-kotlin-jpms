@@ -1,5 +1,4 @@
 pluginManagement {
-	@Suppress("UnstableApiUsage")
 	includeBuild("build-logic")
 }
 
@@ -9,6 +8,9 @@ dependencyResolutionManagement {
 		mavenCentral()
 	}
 }
+
+enableFeaturePreview("STABLE_CONFIGURATION_CACHE")
+enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
 
 rootProject.name = "gradle-kotlin-jpms"
 
