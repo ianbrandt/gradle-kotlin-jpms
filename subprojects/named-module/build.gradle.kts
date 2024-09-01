@@ -1,7 +1,10 @@
+import org.jetbrains.gradle.ext.compiler
+import org.jetbrains.gradle.ext.settings
+
 plugins {
 	application
 	id("com.ianbrandt.buildlogic.kotlin-project")
-	//alias(libs.plugins.gradle.idea.ext.plugin)
+	alias(libs.plugins.gradle.idea.ext.plugin)
 }
 
 val jpmsArgs = listOf(
@@ -29,5 +32,5 @@ tasks {
 
 // Getting IntelliJ internal errors and Gradle sync errors trying to use the
 // `idea` DSL per https://youtrack.jetbrains.com/issue/IDEA-154038:
-//idea.project.settings.compiler.javac.javacAdditionalOptions =
-//	jpmsArgs.joinToString(" ")
+idea.project.settings.compiler.javac.javacAdditionalOptions =
+	jpmsArgs.joinToString(" ")
