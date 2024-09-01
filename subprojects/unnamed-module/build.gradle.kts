@@ -1,3 +1,3 @@
 plugins {
-	id("com.ianbrandt.build.kotlin-project")
+	id("com.ianbrandt.buildlogic.kotlin-project")
 }
