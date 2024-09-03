@@ -16,4 +16,3 @@ rootProject.name = "gradle-kotlin-jpms"
 
 include("subprojects:automatic-module")
 include("subprojects:named-module")
-include("subprojects:unnamed-module")

@@ -1,8 +1,6 @@
 package com.ianbrandt.jpms.auto
 
-import com.ianbrandt.legacy.LegacyGreeter
-
 object AutomaticGreeter {
 
-	fun sayHello(): String = LegacyGreeter.sayHello()
+	fun sayHello(): String = "Hello, I'm an automatic module!"
 }
