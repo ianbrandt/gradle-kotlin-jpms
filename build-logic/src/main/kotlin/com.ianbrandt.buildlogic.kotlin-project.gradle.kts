@@ -36,7 +36,9 @@ tasks {
 			)
 		}
 
-		// https://github.com/gradle/gradle/issues/17271
+		// Per https://github.com/gradle/gradle/issues/17271, Kotlin modules
+		// only compile if the Kotlin compiler destination directory is set to
+		// that of the Java compiler.
 		val compileJava: JavaCompile by tasks
 		destinationDirectory.set(compileJava.destinationDirectory)
 	}
