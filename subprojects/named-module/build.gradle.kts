@@ -5,7 +5,7 @@ plugins {
 
 application {
 	mainModule.set("com.ianbrandt.jpms.named")
-	mainClass.set("com.ianbrandt.jpms.named.HelloWorldKt")
+	mainClass.set("com.ianbrandt.jpms.named.HelloWorld")
 }
 
 dependencies {
