@@ -3,23 +3,16 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
     application
-    kotlin("jvm") version "1.7.21"
+    kotlin("jvm") version "2.0.20"
 }
 
 group = "com.ianbrandt"
 version = "1.0-SNAPSHOT"
 
-val javaTargetVersion = JavaVersion.VERSION_17.toString()
-val kotlinTargetVersion = "1.7"
+val javaTargetVersion = JavaVersion.VERSION_21.toString()
 
 repositories {
     mavenCentral()
-}
-
-kotlin {
-    jvmToolchain  {
-        languageVersion.set(JavaLanguageVersion.of(javaTargetVersion))
-    }
 }
 
 application {
@@ -30,32 +23,43 @@ application {
 tasks {
 
     withType<JavaCompile>().configureEach {
-        sourceCompatibility = javaTargetVersion
-        targetCompatibility = javaTargetVersion
+        with(options) {
+            release = javaTargetVersion.toInt()
+            isFork = true
+        }
     }
 
     withType<KotlinCompile>().configureEach {
-        kotlinOptions {
-            languageVersion = kotlinTargetVersion
-            apiVersion = kotlinTargetVersion
-            jvmTarget = javaTargetVersion
+        compilerOptions {
+            optIn.addAll(
+                "kotlin.ExperimentalStdlibApi",
+                "kotlin.contracts.ExperimentalContracts",
+            )
+            // Planned for deprecation:
+            // https://youtrack.jetbrains.com/issue/KT-61035/
+            freeCompilerArgs.addAll(
+                // https://youtrack.jetbrains.com/issue/KT-61410/
+                "-Xjsr305=strict",
+                // https://youtrack.jetbrains.com/issue/KT-49746/
+                "-Xjdk-release=$javaTargetVersion",
+            )
         }
     }
 
     // Per https://github.com/gradle/gradle/issues/17271, Kotlin modules only
     // compile if the Kotlin compiler destination directory is set to that of
     // Java compiler.
-    //named<KotlinCompile>("compileKotlin").configure {
-    //    val compileJava by getting(JavaCompile::class)
-    //    destinationDirectory.set(compileJava.destinationDirectory)
-    //}
+    named<KotlinCompile>("compileKotlin").configure {
+        val compileJava by getting(JavaCompile::class)
+        destinationDirectory.set(compileJava.destinationDirectory)
+    }
 
     withType<Test>().configureEach {
         useJUnitPlatform()
     }
 
     named<Wrapper>("wrapper").configure {
-        gradleVersion = "7.5.1"
+        gradleVersion = "8.10"
         distributionType = ALL
     }
 }
