@@ -30,7 +30,7 @@ tasks {
 	}
 }
 
-// Getting IntelliJ internal errors and Gradle sync errors trying to use the
-// `idea` DSL per https://youtrack.jetbrains.com/issue/IDEA-154038:
-idea.project.settings.compiler.javac.javacAdditionalOptions =
+// Register the JPMS compiler arguments with IntelliJ per
+// https://youtrack.jetbrains.com/issue/IDEA-154038:
+rootProject.idea.project.settings.compiler.javac.javacAdditionalOptions =
 	jpmsArgs.joinToString(" ")
