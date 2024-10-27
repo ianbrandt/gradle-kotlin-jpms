@@ -1,6 +1,6 @@
 [versions]
 
-gradle-idea-ext-plugin = "1.1.8"
+gradle-idea-ext-plugin = "1.1.9"
 junit = "5.11.0"
 kotlin = "2.0.20"
 
