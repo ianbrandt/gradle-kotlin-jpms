@@ -3,7 +3,7 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
 	application
-	kotlin("jvm") version "2.0.20"
+	kotlin("jvm") version "2.1.20"
 }
 
 group = "com.ianbrandt"
@@ -59,7 +59,7 @@ tasks {
 	}
 
 	named<Wrapper>("wrapper").configure {
-		gradleVersion = "8.10"
+		gradleVersion = "8.14"
 		distributionType = ALL
 	}
 }
