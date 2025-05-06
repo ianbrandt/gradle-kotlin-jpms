@@ -1,8 +1,7 @@
 [versions]
 
-gradle-idea-ext-plugin = "1.1.8"
-junit = "5.11.0"
-kotlin = "2.0.20"
+junit = "5.12.2"
+kotlin = "2.1.20"
 
 [libraries]
 
@@ -14,15 +13,7 @@ version.ref = "junit"
 module = "org.jetbrains.kotlin:kotlin-gradle-plugin"
 version.ref = "kotlin"
 
-[libraries.gradle-idea-ext-plugin-gradle-plugin-dependency]
-module = "gradle.plugin.org.jetbrains.gradle.plugin.idea-ext:gradle-idea-ext"
-version.ref = "gradle-idea-ext-plugin"
-
 [plugins]
-
-[plugins.gradle-idea-ext-plugin]
-id = "org.jetbrains.gradle.plugin.idea-ext"
-version.ref = "gradle-idea-ext-plugin"
 
 [plugins.kotlin-gradle-plugin]
 id = "org.jetbrains.kotlin.jvm"
