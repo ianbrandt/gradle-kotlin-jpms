@@ -1,7 +1,6 @@
 plugins {
 	application
 	id("com.ianbrandt.build.kotlin-project")
-	id("com.ianbrandt.build.test.unit-test-suite")
 }
 
 application {
@@ -10,13 +9,13 @@ application {
 }
 
 tasks {
+	// Enable JPMS: https://youtrack.jetbrains.com/issue/KT-55389/
 	named<JavaCompile>("compileJava") {
+		val mainSourceSetOutput: FileCollection = sourceSets["main"].output
 		options.compilerArgumentProviders.add(CommandLineArgumentProvider {
 			listOf(
-				"--module-path",
-				classpath.asPath,
 				"--patch-module",
-				"com.ianbrandt.jpms.demo=${sourceSets["main"].output.asPath}"
+				"com.ianbrandt.jpms.demo=${mainSourceSetOutput.asPath}"
 			)
 		})
 	}

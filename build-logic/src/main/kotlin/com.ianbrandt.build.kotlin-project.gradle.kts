@@ -1,37 +1,38 @@
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
-	`java-library`
 	kotlin("jvm")
 }
 
-val javaTargetVersion = JavaVersion.VERSION_17.toString()
-val kotlinTargetVersion = "1.7"
-
-dependencies {
-
-	runtimeOnly(kotlin("reflect"))
-}
+val javaTargetVersion = JavaVersion.VERSION_21.toString()
 
 tasks {
 
 	withType<JavaCompile>().configureEach {
-		sourceCompatibility = javaTargetVersion
-		targetCompatibility = javaTargetVersion
+		with(options) {
+			release = javaTargetVersion.toInt()
+			isFork = true
+		}
 	}
 
 	withType<KotlinCompile>().configureEach {
-		kotlinOptions {
-			languageVersion = kotlinTargetVersion
-			apiVersion = kotlinTargetVersion
-			jvmTarget = javaTargetVersion
-			freeCompilerArgs = listOf(
-				"-Xjsr305=strict",
+		compilerOptions {
+			optIn.addAll(
+				"kotlin.ExperimentalStdlibApi",
+				"kotlin.contracts.ExperimentalContracts",
 			)
-
-			// https://github.com/gradle/gradle/issues/17271
-			val compileJava: JavaCompile by tasks
-			destinationDirectory.set(compileJava.destinationDirectory)
+			// Planned for deprecation:
+			// https://youtrack.jetbrains.com/issue/KT-61035/
+			freeCompilerArgs.addAll(
+				// https://youtrack.jetbrains.com/issue/KT-61410/
+				"-Xjsr305=strict",
+				// https://youtrack.jetbrains.com/issue/KT-49746/
+				"-Xjdk-release=$javaTargetVersion",
+			)
 		}
+
+		// https://github.com/gradle/gradle/issues/17271
+		val compileJava: JavaCompile by tasks
+		destinationDirectory.set(compileJava.destinationDirectory)
 	}
 }
