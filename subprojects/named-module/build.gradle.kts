@@ -9,5 +9,5 @@ application {
 }
 
 dependencies {
-	implementation(projects.subprojects.otherNamedModule)
+	implementation(projects.subprojects.javaNamedModule)
 }
