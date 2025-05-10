@@ -1,3 +1,4 @@
-module com.ianbrandt.jpms.lib {
-	exports com.ianbrandt.jpms.lib;
+module com.ianbrandt.jpms.app {
+	exports com.ianbrandt.jpms.app;
+	requires com.ianbrandt.jpms.lib;
 }

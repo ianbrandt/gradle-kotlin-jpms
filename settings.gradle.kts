@@ -15,4 +15,4 @@ enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
 rootProject.name = "gradle-kotlin-jpms"
 
 include("subprojects:java-named-module")
-include("subprojects:named-module")
+include("subprojects:kotlin-named-module")
