@@ -1,14 +1,9 @@
 [versions]
 
 gradle-idea-ext-plugin = "1.4.1"
-junit = "6.1.3"
 kotlin = "2.4.21"
 
 [libraries]
-
-[libraries.junit-bom]
-module = "org.junit:junit-bom"
-version.ref = "junit"
 
 [libraries.kotlin-gradle-plugin-dependency]
 module = "org.jetbrains.kotlin:kotlin-gradle-plugin"

@@ -9,5 +9,4 @@ dependencyResolutionManagement {
 rootProject.name = "platforms"
 
 include("app-platform")
-include("test-platform")
 include("plugins-platform")
