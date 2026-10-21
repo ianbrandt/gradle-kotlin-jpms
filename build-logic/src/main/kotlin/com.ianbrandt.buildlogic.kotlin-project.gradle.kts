@@ -36,7 +36,7 @@ tasks {
 	// compile if the Kotlin compiler destination directory is set to that of
 	// the Java compiler.
 	named<KotlinCompile>("compileKotlin").configure {
-		val compileJava by getting(JavaCompile::class)
+		val compileJava = getByName<JavaCompile>("compileJava")
 		destinationDirectory.set(compileJava.destinationDirectory)
 	}
 }
