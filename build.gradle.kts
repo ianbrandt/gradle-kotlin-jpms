@@ -3,14 +3,13 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
     application
-    kotlin("jvm") version "1.7.21"
+    kotlin("jvm") version "2.4.21"
 }
 
 group = "com.ianbrandt"
 version = "1.0-SNAPSHOT"
 
 val javaTargetVersion = JavaVersion.VERSION_17.toString()
-val kotlinTargetVersion = "1.7"
 
 repositories {
     mavenCentral()
@@ -34,19 +33,11 @@ tasks {
         targetCompatibility = javaTargetVersion
     }
 
-    withType<KotlinCompile>().configureEach {
-        kotlinOptions {
-            languageVersion = kotlinTargetVersion
-            apiVersion = kotlinTargetVersion
-            jvmTarget = javaTargetVersion
-        }
-    }
-
     // Per https://github.com/gradle/gradle/issues/17271, Kotlin modules only
     // compile if the Kotlin compiler destination directory is set to that of
     // Java compiler.
     named<KotlinCompile>("compileKotlin").configure {
-        val compileJava by getting(JavaCompile::class)
+        val compileJava = getByName<JavaCompile>("compileJava")
         destinationDirectory.set(compileJava.destinationDirectory)
     }
 
@@ -55,7 +46,7 @@ tasks {
     }
 
     named<Wrapper>("wrapper").configure {
-        gradleVersion = "7.5.1"
+        gradleVersion = "9.8.2"
         distributionType = ALL
     }
 }
