@@ -1,0 +1,1 @@
+build=fail:Symbol is declared in module 'unnamed.module', which the current module does not depend on

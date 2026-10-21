@@ -1,0 +1,2 @@
+build=pass
+run=fail:Module com.ianbrandt.jpms not found
