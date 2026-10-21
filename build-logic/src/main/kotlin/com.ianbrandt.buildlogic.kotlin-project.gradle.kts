@@ -32,7 +32,7 @@ tasks {
 		}
 
 		// https://github.com/gradle/gradle/issues/17271
-		val compileJava: JavaCompile by tasks
+		val compileJava = tasks.getByName<JavaCompile>("compileJava")
 		destinationDirectory.set(compileJava.destinationDirectory)
 	}
 }
