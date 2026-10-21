@@ -1,9 +1,10 @@
 ### JetBrains template
 
-.idea/*
-!.idea/codeStyles/
-!.idea/inspectionProfiles/
-!.idea/encodings.xml
+**/.idea/*
+!**/.idea/codeStyles/
+!**/.idea/encodings.xml
+!**/.idea/inspectionProfiles/
+!**/.idea/runConfigurations/
 
 # Gradle:
 *.iml
