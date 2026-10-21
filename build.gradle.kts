@@ -49,10 +49,10 @@ tasks {
     // Per https://github.com/gradle/gradle/issues/17271, Kotlin modules only
     // compile if the Kotlin compiler destination directory is set to that of
     // Java compiler.
-    named<KotlinCompile>("compileKotlin").configure {
-        val compileJava = getByName<JavaCompile>("compileJava")
-        destinationDirectory.set(compileJava.destinationDirectory)
-    }
+    //named<KotlinCompile>("compileKotlin").configure {
+    //    val compileJava = getByName<JavaCompile>("compileJava")
+    //    destinationDirectory.set(compileJava.destinationDirectory)
+    //}
 
     withType<Test>().configureEach {
         useJUnitPlatform()
