@@ -14,7 +14,7 @@ allprojects {
 tasks {
 
 	named<Wrapper>("wrapper").configure {
-		gradleVersion = "8.14"
+		gradleVersion = "9.8.2"
 		distributionType = ALL
 	}
 }
