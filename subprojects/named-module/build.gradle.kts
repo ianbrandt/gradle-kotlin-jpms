@@ -9,5 +9,5 @@ application {
 }
 
 dependencies {
-	implementation(projects.subprojects.unnamedModule)
+	implementation(projects.subprojects.automaticModule)
 }
