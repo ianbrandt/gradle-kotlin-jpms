@@ -1,0 +1,12 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="HelloWorldKt" type="JetRunConfigurationType" nameIsGenerated="true">
+    <option name="MAIN_CLASS_NAME" value="com.ianbrandt.jpms.app.HelloWorldKt" />
+    <module name="gradle-kotlin-jpms.subprojects.named-module.main" />
+    <shortenClasspath name="NONE" />
+    <option name="VM_PARAMETERS" value="--patch-module com.ianbrandt.jpms.app=$PROJECT_DIR$/subprojects/named-module/build/classes/kotlin/main" />
+    <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+    <method v="2">
+      <option name="Make" enabled="true" />
+    </method>
+  </configuration>
+</component>
