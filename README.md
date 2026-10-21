@@ -2,13 +2,13 @@
 
 Reproducer for issues with Gradle support of Java Platform Module System modules implemented in Kotlin.
 
-Each reproducer is a standalone Gradle build under `scenarios/`. The builds share the wrapper, `gradle.properties`, the version catalog, `build-logic`, and `platforms` at the repository root. Run one with:
+Each reproducer is a standalone Gradle build under `scenarios/`. The builds share the wrapper, the version catalog, `build-logic`, and `platforms` at the repository root. Gradle reads `gradle.properties` only from a build's root directory, so each scenario has a copy of the root one. Run one with:
 
 ```bash
 ./gradlew -p scenarios/named clean build
 ```
 
-`./check-scenarios.sh` runs every scenario with the build cache off and compares each outcome with the scenario's `expected` file. Outcomes are from `clean build` and `clean run` with Gradle 9.8.2, Kotlin 2.4.21, and JDK 21.
+`./check-scenarios.sh` runs every scenario with the build cache off and compares each outcome with the scenario's `expected` file. It also fails when a scenario's `gradle.properties` differs from the root one. Outcomes are from `clean build` and `clean run` with Gradle 9.8.2, Kotlin 2.4.21, and JDK 21.
 
 | Scenario | Setup | Outcome |
 |---|---|---|

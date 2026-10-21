@@ -35,6 +35,12 @@ matches() {
 status=0
 for name in "${scenarios[@]}"; do
 	dir="$root/scenarios/$name"
+	# Gradle reads gradle.properties only from the build's root directory, so
+	# each scenario has a copy of the shared one.
+	if ! cmp -s "$root/gradle.properties" "$dir/gradle.properties"; then
+		echo "FAIL  $name: gradle.properties differs from $root/gradle.properties"
+		status=1
+	fi
 	while IFS='=' read -r task expected; do
 		log="$logs/$name-$task.log"
 		if "$root/gradlew" -p "$dir" --console=plain --no-build-cache \
