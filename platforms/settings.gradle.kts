@@ -8,5 +8,4 @@ dependencyResolutionManagement {
 
 rootProject.name = "platforms"
 
-include("app-platform")
 include("plugins-platform")
