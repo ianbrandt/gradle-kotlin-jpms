@@ -3,7 +3,7 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
     application
-    kotlin("jvm") version "2.0.20"
+    kotlin("jvm") version "2.4.21"
 }
 
 group = "com.ianbrandt"
@@ -50,7 +50,7 @@ tasks {
     // compile if the Kotlin compiler destination directory is set to that of
     // Java compiler.
     named<KotlinCompile>("compileKotlin").configure {
-        val compileJava by getting(JavaCompile::class)
+        val compileJava = getByName<JavaCompile>("compileJava")
         destinationDirectory.set(compileJava.destinationDirectory)
     }
 
@@ -59,7 +59,7 @@ tasks {
     }
 
     named<Wrapper>("wrapper").configure {
-        gradleVersion = "8.10"
+        gradleVersion = "9.8.2"
         distributionType = ALL
     }
 }
