@@ -1,6 +1,6 @@
 # Gradle Kotlin JPMS Reproducer
 
-Reproducer for issues with Gradle support of Java Platform Module System modules implemented in Kotlin.
+Reproducer for issues with Kotlin, Gradle, and IntelliJ support of the Java Platform Module System.
 
 Each reproducer is a standalone Gradle build under `scenarios/`. The builds share the wrapper, the version catalog, `build-logic`, and `platforms` at the repository root. Gradle reads `gradle.properties` only from a build's root directory, so each scenario has a copy of the root one. Run one with:
 
