@@ -10,6 +10,12 @@ Each reproducer is a standalone Gradle build under `scenarios/`. The builds shar
 
 `./check-scenarios.sh` runs every scenario with the build cache off and compares each outcome with the scenario's `expected` file. It also fails when a scenario's `gradle.properties` differs from the root one. Outcomes are from `clean build` and `clean run` with Gradle 9.8.2, Kotlin 2.4.21, and JDK 21.
 
+With the Gradle property `splitKotlinModulePath=true`, `compileKotlin`'s dependencies are split the way `compileJava`'s are, per [KT-90678](https://youtrack.jetbrains.com/issue/KT-90678). A jar or directory with a `module-info.class`, or a jar with an `Automatic-Module-Name`, goes to `-Xmodule-path`, and everything else stays on `-classpath`. The split is limited to projects with `src/main/java/module-info.java`. Every scenario has the same outcome with the split as without it:
+
+```bash
+ORG_GRADLE_PROJECT_splitKotlinModulePath=true ./check-scenarios.sh
+```
+
 | Scenario | Setup | Outcome |
 |---|---|---|
 | [`named`](scenarios/named) | One Kotlin named module, compiled to the Java destination directory per [gradle/gradle#17271](https://github.com/gradle/gradle/issues/17271) | Builds and runs |
