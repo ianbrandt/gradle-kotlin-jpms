@@ -1,0 +1,2 @@
+build=fail:Unresolved reference 'extra'
+run=fail:Unresolved reference 'extra'

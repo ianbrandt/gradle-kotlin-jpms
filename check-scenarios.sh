@@ -41,6 +41,12 @@ for name in "${scenarios[@]}"; do
 		echo "FAIL  $name: gradle.properties differs from $root/gradle.properties"
 		status=1
 	fi
+	# A scenario whose outcome changes with splitKotlinModulePath has an
+	# expected-split file for that mode.
+	expected_file="$dir/expected"
+	if [ "${ORG_GRADLE_PROJECT_splitKotlinModulePath:-}" = true ] && [ -f "$dir/expected-split" ]; then
+		expected_file="$dir/expected-split"
+	fi
 	while IFS='=' read -r task expected; do
 		log="$logs/$name-$task.log"
 		if "$root/gradlew" -p "$dir" --console=plain --no-build-cache \
@@ -55,6 +61,6 @@ for name in "${scenarios[@]}"; do
 			echo "FAIL  $name $task: expected $expected, got $actual ($log)"
 			status=1
 		fi
-	done < "$dir/expected"
+	done < "$expected_file"
 done
 exit $status
