@@ -10,7 +10,7 @@ Each reproducer is a standalone Gradle build under `scenarios/`. The builds shar
 
 `./check-scenarios.sh` runs every scenario with the build cache off and compares each outcome with the scenario's `expected` file. It also fails when a scenario's `gradle.properties` differs from the root one. Outcomes are from `clean build` and `clean run` with Gradle 9.8.2, Kotlin 2.4.21, and JDK 21.
 
-With the Gradle property `splitKotlinModulePath=true`, `compileKotlin`'s dependencies are split the way `compileJava`'s are, per [KT-90678](https://youtrack.jetbrains.com/issue/KT-90678). A jar or directory with a `module-info.class`, or a jar with an `Automatic-Module-Name`, goes to `-Xmodule-path`, and everything else stays on `-classpath`. The split is limited to projects with `src/main/java/module-info.java`. `named-plain-jar-collision` is the only scenario with a different outcome with the split, recorded in its `expected-split` file:
+With the Gradle property `splitKotlinModulePath=true`, `compileKotlin`'s dependencies are split the way `compileJava`'s are, per [KT-90678](https://youtrack.jetbrains.com/issue/KT-90678). A jar or directory with a `module-info.class`, or a jar with an `Automatic-Module-Name`, goes to `-Xmodule-path`, and everything else stays on `-classpath`. The split is limited to projects with `src/main/java/module-info.java`. `named-plain-jar-collision` and `named-package-prefix` have a different outcome with the split, recorded in each one's `expected-split` file:
 
 ```bash
 ORG_GRADLE_PROJECT_splitKotlinModulePath=true ./check-scenarios.sh
@@ -21,6 +21,7 @@ ORG_GRADLE_PROJECT_splitKotlinModulePath=true ./check-scenarios.sh
 | [`named`](scenarios/named) | One Kotlin named module, compiled to the Java destination directory per [gradle/gradle#17271](https://github.com/gradle/gradle/issues/17271) | Builds and runs |
 | [`default-destination-dir`](scenarios/default-destination-dir) | `named` without the #17271 workaround | `compileJava` fails with `package is empty or does not exist: com.ianbrandt.jpms` |
 | [`module-info-in-kotlin-src`](scenarios/module-info-in-kotlin-src) | `named` with `module-info.java` under `src/main/kotlin` | Builds, but `run` fails with `Module com.ianbrandt.jpms not found` |
+| [`named-package-prefix`](scenarios/named-package-prefix) | `package-empty` with `javaPackagePrefix` set on `compileKotlin` | `compileKotlin` fails with `Module kotlin.stdlib cannot be found in the module graph`, since kotlinc copies no classpath entries onto the module path when a package prefix is set. With the split, it builds and runs |
 | [`package-empty`](scenarios/package-empty) | One Kotlin named module in a subproject, without the empty Java class once needed to avoid `package is empty or does not exist` | Builds and runs |
 | [`named-named`](scenarios/named-named) | A Kotlin named module that requires another Kotlin named module | Builds and runs |
 | [`named-java-named`](scenarios/named-java-named) | A Kotlin named module that requires a Java named module | Builds and runs |

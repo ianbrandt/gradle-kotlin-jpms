@@ -1,0 +1,2 @@
+build=fail:Module kotlin.stdlib cannot be found in the module graph
+run=fail:Module kotlin.stdlib cannot be found in the module graph
