@@ -28,6 +28,7 @@ ORG_GRADLE_PROJECT_splitKotlinModulePath=true ./check-scenarios.sh
 | [`java-named-kotlin-named`](scenarios/java-named-kotlin-named) | A Java named module that requires a Kotlin named module | Builds and runs |
 | [`java-named-kotlin-named-KT-55389`](scenarios/java-named-kotlin-named-KT-55389) | `java-named-kotlin-named` with the KT-55389 workaround in place of the #17271 one | Builds and runs |
 | [`named-automatic`](scenarios/named-automatic) | A Kotlin named module that requires a Kotlin automatic module | Builds and runs |
+| [`named-plain-jar`](scenarios/named-plain-jar) | `named-automatic` without `Automatic-Module-Name`, so the Kotlin named module requires the jar by its file-derived name, `automatic.module` | `compileKotlin` reads the jar as an automatic module per [KT-90678](https://youtrack.jetbrains.com/issue/KT-90678), but `compileJava` fails with `module not found: automatic.module` |
 | [`java-named-automatic`](scenarios/java-named-automatic) | A Java named module that requires a Java automatic module | Builds and runs |
 | [`named-automatic-unnamed`](scenarios/named-automatic-unnamed) | A Kotlin named module that requires a Kotlin automatic module, which depends on a Kotlin unnamed module | Builds and runs |
 | [`named-reads-unnamed`](scenarios/named-reads-unnamed) | A Kotlin named module that reads a Kotlin unnamed module with `--add-reads` | `compileKotlin` fails with `Symbol is declared in module 'unnamed.module', which the current module does not depend on`, pending [KT-20740](https://youtrack.jetbrains.com/issue/KT-20740) |

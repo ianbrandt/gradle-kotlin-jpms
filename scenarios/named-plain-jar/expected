@@ -1,0 +1,2 @@
+build=fail:module not found: automatic.module
+run=fail:module not found: automatic.module
