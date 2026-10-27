@@ -1,0 +1,2 @@
+build=fail:package HelloWorld does not exist
+run=fail:package HelloWorld does not exist
